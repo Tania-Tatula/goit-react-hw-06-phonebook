@@ -18,8 +18,8 @@
 //   };
 
 
-//   componentDidMount() {
-//     const contacts = localStorage.getItem("contacts");
+  // componentDidMount() {
+  //   const contacts = localStorage.getItem("contacts");
 //     const parsedContacts = JSON.parse(contacts);
 //     if (parsedContacts) {
 //       this.setState({ contacts: parsedContacts });
@@ -103,23 +103,25 @@ import ContactForm from "./components/Contacts/ContactForm";
 import Filter from "./components/Contacts/Filter";
 import ContactList from "./components/Contacts/ContactList";
 import styles from "./components/Contacts/Contacts.module.css";
+import contactsActions from './redux/contacts/contacts-actions';
+
 
 class App extends Component {
 
 
-  componentDidMount() {
-    const contacts = localStorage.getItem("contacts");
-    const parsedContacts = JSON.parse(contacts);
-    if (parsedContacts) {
-      this.setState({ contacts: parsedContacts });
-    }
-  }
+  // componentDidMount() {
+  //   console.log(JSON.parse(localStorage.getItem("contacts")));
+  //   return JSON.parse(localStorage.getItem("contacts"));
+  //   // if (parsedContacts) {
+  //   //   this.setState({ contacts: parsedContacts });
+  //   // }
+  // }
 
-  componentDidUpdate(prevState) {
-    if (this.state.contacts !== prevState.contacts) {
-      localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
-    }
-  }
+  // componentDidUpdate(prevState) {
+  //   // if (state.contacts !== prevState.contacts) {
+  //     // localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
+  //   // }
+  // }
   
   render() {
     return (
@@ -136,5 +138,32 @@ class App extends Component {
 }
 
 
+  // function componentDidMount() {
+  //   const contacts = localStorage.getItem("contacts");
+  //   const parsedContacts = JSON.parse(contacts);
+  //   if (parsedContacts) {
+  //     return parsedContacts;
+  //   }
+  // }
 
-export default (App);
+
+
+
+
+
+
+  const mapDispatchToProps = dispatch =>({
+    componentDidMount:() => dispatch(contactsActions.contactsDidMount()),
+    componentDidUpdate:(prevState)=> dispatch(contactsActions.contactsUpdate(prevState))
+  })
+
+
+
+export default connect(null, mapDispatchToProps)(App);
+
+
+
+
+// export default (App);
+
+

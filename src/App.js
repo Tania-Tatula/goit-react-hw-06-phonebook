@@ -17,9 +17,8 @@
 //     filter: "",
 //   };
 
-
-  // componentDidMount() {
-  //   const contacts = localStorage.getItem("contacts");
+// componentDidMount() {
+//   const contacts = localStorage.getItem("contacts");
 //     const parsedContacts = JSON.parse(contacts);
 //     if (parsedContacts) {
 //       this.setState({ contacts: parsedContacts });
@@ -31,7 +30,7 @@
 //       localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
 //     }
 //   }
-  
+
 //   formSubmitHandler = (contact) => {
 //     const { contacts } = this.state;
 //     const names = contacts.map((contact) => contact.name);
@@ -62,7 +61,6 @@
 //     }));
 //   };
 
-
 //   render() {
 //     return (
 //       <div className={styles.App}>
@@ -80,7 +78,6 @@
 //   }
 // }
 
-
 // const mapStateToProps = state => {
 //   return{
 //     contacts: state.items,
@@ -95,75 +92,24 @@
 
 // export default connect(mapStateToProps, mapDispatchToProps)(App);
 
-
-
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import ContactForm from "./components/Contacts/ContactForm";
 import Filter from "./components/Contacts/Filter";
 import ContactList from "./components/Contacts/ContactList";
 import styles from "./components/Contacts/Contacts.module.css";
-import contactsActions from './redux/contacts/contacts-actions';
-
 
 class App extends Component {
-
-
-  // componentDidMount() {
-  //   console.log(JSON.parse(localStorage.getItem("contacts")));
-  //   return JSON.parse(localStorage.getItem("contacts"));
-  //   // if (parsedContacts) {
-  //   //   this.setState({ contacts: parsedContacts });
-  //   // }
-  // }
-
-  // componentDidUpdate(prevState) {
-  //   // if (state.contacts !== prevState.contacts) {
-  //     // localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
-  //   // }
-  // }
-  
   render() {
     return (
       <div className={styles.App}>
-
         <h1>Phonebook</h1>
         <ContactForm />
         <h2>Contacts</h2>
         <Filter />
-        <ContactList/>
+        <ContactList />
       </div>
     );
   }
 }
 
-
-  // function componentDidMount() {
-  //   const contacts = localStorage.getItem("contacts");
-  //   const parsedContacts = JSON.parse(contacts);
-  //   if (parsedContacts) {
-  //     return parsedContacts;
-  //   }
-  // }
-
-
-
-
-
-
-
-  const mapDispatchToProps = dispatch =>({
-    componentDidMount:() => dispatch(contactsActions.contactsDidMount()),
-    componentDidUpdate:(prevState)=> dispatch(contactsActions.contactsUpdate(prevState))
-  })
-
-
-
-export default connect(null, mapDispatchToProps)(App);
-
-
-
-
-// export default (App);
-
-
+export default App;

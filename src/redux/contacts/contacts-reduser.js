@@ -1,5 +1,4 @@
-import { createStore, combineReducers } from "redux";
-import types from "./contacts-types";
+import { combineReducers } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
 import actions from './contacts-actions';
 
@@ -9,10 +8,6 @@ const items = createReducer([], {
     ? alert(`${payload.name} is already in contacts.`)
     : [payload, ...state],
     [actions.deleteContacts]: (state, { payload }) => state.filter(({ id }) => id !== payload),
-    [actions.contactsDidMount]: (_ , { payload }) => JSON.parse(localStorage.getItem(payload)) && [JSON.parse(localStorage.getItem(payload))],
-    [actions.contactsUpdate]:(state, { payload }) => state.contacts !== payload.contacts && [localStorage.setItem("contacts", JSON.stringify(state.contacts))],
-
-
 });
 // const items = (state = [], { type, payload }) => {
 //   switch (type) {
@@ -47,19 +42,19 @@ const items = createReducer([], {
 // };
 
 
-// const filter = createReducer('', {
-//     [actions.changeFilter]: (state, { type, payload }) => payload,
-// })
+const filter = createReducer('', {
+    [actions.changeFilter]: (_, { payload }) => payload,
+})
 
-const filter = (state = "", { type, payload }) => {
-  switch (type) {
-    case types.FILTER:
-      return payload;
+// const filter = (state = "", { type, payload }) => {
+//   switch (type) {
+//     case types.FILTER:
+//       return payload;
 
-    default:
-      return state;
-  }
-};
+//     default:
+//       return state;
+//   }
+// };
 
 export default combineReducers({
   items,

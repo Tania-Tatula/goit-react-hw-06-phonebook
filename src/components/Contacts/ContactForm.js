@@ -1,13 +1,12 @@
 import { Component } from "react";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 import shortid from "shortid";
-import contactsActions from '../../redux/contacts/contacts-actions'
+import contactsActions from "../../redux/contacts/contacts-actions";
 
 import styles from "./Contacts.module.css";
 
 class ContactForm extends Component {
   state = {
-    // contacts: [],
     name: "",
     number: "",
   };
@@ -84,7 +83,7 @@ class ContactForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch =>({
-  onSubmit:contact => dispatch(contactsActions.submit(contact))
-})
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit: (contact) => dispatch(contactsActions.submit(contact)),
+});
 export default connect(null, mapDispatchToProps)(ContactForm);

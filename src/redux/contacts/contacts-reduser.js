@@ -24,16 +24,6 @@ const items = createReducer([], {
 
 
 
-//     case types.MOUNT:
-//       return  JSON.parse(localStorage.getItem("contacts")) && [
-//            JSON.parse(localStorage.getItem("contacts"))]
-
-      
-
-//     case types.UPDATE:
-//       return state.contacts !== payload.contacts && [
-//           localStorage.setItem("contacts", JSON.stringify(state.contacts)),
-//         ]
     
 
 //     default:
